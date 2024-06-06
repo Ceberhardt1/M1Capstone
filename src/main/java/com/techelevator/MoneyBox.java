@@ -24,6 +24,10 @@ public class MoneyBox {
 
     }
 
+    public void takeAwayMoney(Double debt){
+        machineMoneyBalance -= debt;
+    }
+
 
 
 

@@ -44,34 +44,49 @@ public class Application {
 
 			} else if (userChoice.equals("2")) {
 				// head to purchase menu
-				double money = 0.00;
+				//double money = 0.00;
 
 
 				while (true) {
 
 					String purchaseChoice = ui.showPurchaseMenu();
 
-					ui.displayMoney(money);
+					//ui.displayMoney(money);
 
 
 					if (purchaseChoice.equals("1")) {
 						//feed money
 						ui.askForDollarAmount();
-						money = change.feedMoney();
-//						ui.displayMoney(money);
+						Double money = change.feedMoney();
+						ui.displayMoney(money);
 
 
 					}
 					else if (purchaseChoice.equals("2")) {
 						// select product
-						loadingFile.loadFile();
+						for (Items in : inventory.retreiveList()){
+							ui.displayItems(in);
+						}
+						String askSlot = ui.askForSlotID();
+						String askQuantity = ui.askForQuantity();
 
+						for(Items in: inventory.retreiveList()){
+							if(in.getSlot().equalsIgnoreCase(askSlot)){
 
+								Double sum = in.getPrice() * Double.parseDouble(askQuantity);
+								change.takeAwayMoney(sum);
+								ui.displaySnacksPriceType(in);
+								ui.displayMoney(change.machineMoneyBalance);
+							}
 
+						}
 
 					}
 					else if (purchaseChoice.equals("3")) {
 						// finished transaction
+						if(change.machineMoneyBalance ){
+
+						}
 
 					}
 

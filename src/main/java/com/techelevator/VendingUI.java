@@ -81,5 +81,9 @@ public class VendingUI {
         System.out.println("current money provided: " + mone);
     }
 
+    public void displaySnacksPriceType(Items items){
+        System.out.println(items.getName() + " " + items.getPrice());
+    }
+
 
 }
