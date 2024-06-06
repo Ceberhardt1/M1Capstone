@@ -16,12 +16,17 @@ public class Application {
 
 	public void run() throws FileNotFoundException {
 
+		Inventory inventory = new Inventory();
+
+
+
+
 		VendingUI ui = new VendingUI(scanner);
 //		ui.showMainMenu();
-		Change change = new Change();
+		MoneyBox change = new MoneyBox();
 
 
-		StockFileReader loadingFile = new StockFileReader(scanner);
+		StockFileReader loadingFile = new StockFileReader();
 
 
 		while (true) {
@@ -30,20 +35,30 @@ public class Application {
 
 			if (userChoice.equals("1")) {
 				//display items
-				loadingFile.loadFile();
+				for (Items in : inventory.retreiveList()){
+					ui.displayItems(in);
+				}
+
+
 
 
 			} else if (userChoice.equals("2")) {
 				// head to purchase menu
+				double money = 0.00;
+
 
 				while (true) {
-//					purchaseMenu.showPurchaseMenu();
 
 					String purchaseChoice = ui.showPurchaseMenu();
 
+					ui.displayMoney(money);
+
+
 					if (purchaseChoice.equals("1")) {
 						//feed money
-						change.eatingMoney();
+						ui.askForDollarAmount();
+						money = change.feedMoney();
+//						ui.displayMoney(money);
 
 
 					}

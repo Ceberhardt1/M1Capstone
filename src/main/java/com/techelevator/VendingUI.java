@@ -1,5 +1,8 @@
 package com.techelevator;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class VendingUI {
@@ -8,7 +11,12 @@ public class VendingUI {
 
     private Scanner myScanner;
 
-    public VendingUI(Scanner myScanner){
+     private Inventory inventory = new Inventory();
+
+
+
+
+    public VendingUI(Scanner myScanner) throws FileNotFoundException {
         this.myScanner = myScanner;
     }
 
@@ -38,9 +46,40 @@ public class VendingUI {
         System.out.println("3. finish purchase");
 
 
+
+
         return myScanner.nextLine();
 
 
     }
+
+    public void leaveMessage(){
+        System.out.println("thanks for coming, goodbye");
+    }
+
+    public void askForDollarAmount(){
+        System.out.println("please enter a dollar amount, between 1-10");
+//        return myScanner.nextLine();
+    }
+
+
+    public String askForQuantity(){
+        System.out.println("how much do you want?");
+        return myScanner.nextLine();
+    }
+
+    public String askForSlotID(){
+        System.out.println("enter slot ID");
+        return myScanner.nextLine();
+    }
+
+    public void displayItems(Items mhm){
+        System.out.println(mhm);
+    }
+
+    public void displayMoney(double mone){
+        System.out.println("current money provided: " + mone);
+    }
+
 
 }

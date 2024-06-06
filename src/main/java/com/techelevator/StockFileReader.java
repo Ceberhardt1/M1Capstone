@@ -6,13 +6,13 @@ import java.util.*;
 
 public class StockFileReader {
 
-    Change change = new Change();
+    MoneyBox change = new MoneyBox();
 
     private Scanner myScanner;
 
     // making a constructor for this scanner
-    public StockFileReader(Scanner myScanner) {
-        this.myScanner = myScanner;
+    public StockFileReader() {
+//        this.myScanner = myScanner;
     }
 
     //Make a public list to store the file name
