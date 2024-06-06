@@ -29,5 +29,18 @@ public class VendingUI {
 
 
     }
+    public String showPurchaseMenu() {
+
+        //print main menu and return the user's choice:
+
+        System.out.println("1. Feed Money");
+        System.out.println("2. Select Product");
+        System.out.println("3. finish purchase");
+
+
+        return myScanner.nextLine();
+
+
+    }
 
 }

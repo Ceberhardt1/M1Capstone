@@ -6,27 +6,37 @@ import java.util.*;
 
 public class StockFileReader {
 
+    Change change = new Change();
+
+    private Scanner myScanner;
+
+    // making a constructor for this scanner
+    public StockFileReader(Scanner myScanner) {
+        this.myScanner = myScanner;
+    }
+
     //Make a public list to store the file name
 
     // map for tracking quantity
-    public Map<Integer, Items> quantityTrackMap = new TreeMap<>();
-    List<Items> listOfItems = new ArrayList<>();
 
-    public List<Items> loadFile() throws FileNotFoundException {
+    public Map<String, Items> loadFile() throws FileNotFoundException {
 
+        Map<String, Items> quantityTrackerMap = new HashMap<>();
+
+        List<Items> listOfItems = new ArrayList<>();
         File stockFile = new File("vendingmachine.csv");
 
         //Create list to contain and add items from file
 
         //now make a try catch, and scanner to read from the file
-        try (Scanner scanner = new Scanner(stockFile)){
+        try (Scanner scanner = new Scanner(stockFile)) {
             //Loop through to the end of the file
-            while(scanner.hasNextLine()){
+            while (scanner.hasNextLine()) {
                 Items item = new Items();
 
                 //grabbing a record of the file, to stick into an object
                 String record = scanner.nextLine();
-                String[] fields = record.split("\\|") ;
+                String[] fields = record.split("\\|");
 
 
                 //setting parts of the object ex: name, and quantity
@@ -37,40 +47,15 @@ public class StockFileReader {
 
 
                 // makes a map of the items along with their quantity which is default 10
-                quantityTrackMap.put(10, item);
 
+                quantityTrackerMap.put(item.getSlot(), item);
 
                 //add items to list
                 listOfItems.add(item);
 
 
-
-
-
-
             }
         }
-        for(Items items: listOfItems){
-            System.out.println(items);
-        }
-        System.out.println(listOfItems);
-        return listOfItems;
-
-
+        return quantityTrackerMap;
     }
-
-
-    public void selectProduct(String slot, Integer quantity){
-        for (Items in : listOfItems){
-            if (in.getSlot() == slot){
-                System.out.println(in.getName() + " " + in.getPrice() );
-            }
-        }
-
-
-
-    }
-
-
-
 }

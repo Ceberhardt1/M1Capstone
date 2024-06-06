@@ -18,11 +18,10 @@ public class Application {
 
 		VendingUI ui = new VendingUI(scanner);
 //		ui.showMainMenu();
-		PurchaseMenu purchaseMenu = new PurchaseMenu(scanner);
 		Change change = new Change();
 
 
-		StockFileReader loadingFile = new StockFileReader();
+		StockFileReader loadingFile = new StockFileReader(scanner);
 
 
 		while (true) {
@@ -40,21 +39,23 @@ public class Application {
 				while (true) {
 //					purchaseMenu.showPurchaseMenu();
 
-
-
-					String purchaseChoice = purchaseMenu.showPurchaseMenu();
+					String purchaseChoice = ui.showPurchaseMenu();
 
 					if (purchaseChoice.equals("1")) {
 						//feed money
 						change.eatingMoney();
 
 
-					} else if (purchaseChoice.equals("2")) {
+					}
+					else if (purchaseChoice.equals("2")) {
 						// select product
 						loadingFile.loadFile();
-						System.out.println("please select one of the follow slots");
 
-					} else if (purchaseChoice.equals("3")) {
+
+
+
+					}
+					else if (purchaseChoice.equals("3")) {
 						// finished transaction
 
 					}
