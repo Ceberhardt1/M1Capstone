@@ -51,6 +51,8 @@ public class Application {
 
 					} else if (purchaseChoice.equals("2")) {
 						// select product
+						loadingFile.loadFile();
+						System.out.println("please select one of the follow slots");
 
 					} else if (purchaseChoice.equals("3")) {
 						// finished transaction

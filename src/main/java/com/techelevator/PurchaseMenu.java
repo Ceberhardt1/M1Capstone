@@ -11,7 +11,6 @@ public class PurchaseMenu {
     public PurchaseMenu(Scanner myScanner){
         this.myScanner = myScanner;
     }
-    Change change = new Change();
 
     public String showPurchaseMenu() {
 
@@ -21,7 +20,6 @@ public class PurchaseMenu {
         System.out.println("2. Select Product");
         System.out.println("3. finish purchase");
 
-        System.out.println("current money provided: $" + change.machineMoney);
 
         return myScanner.nextLine();
 

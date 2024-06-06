@@ -10,12 +10,13 @@ public class StockFileReader {
 
     // map for tracking quantity
     public Map<Integer, Items> quantityTrackMap = new TreeMap<>();
+    List<Items> listOfItems = new ArrayList<>();
+
     public List<Items> loadFile() throws FileNotFoundException {
 
         File stockFile = new File("vendingmachine.csv");
 
         //Create list to contain and add items from file
-        List<Items> listOfItems = new ArrayList<>();
 
         //now make a try catch, and scanner to read from the file
         try (Scanner scanner = new Scanner(stockFile)){
@@ -54,6 +55,18 @@ public class StockFileReader {
         }
         System.out.println(listOfItems);
         return listOfItems;
+
+
+    }
+
+
+    public void selectProduct(String slot, Integer quantity){
+        for (Items in : listOfItems){
+            if (in.getSlot() == slot){
+                System.out.println(in.getName() + " " + in.getPrice() );
+            }
+        }
+
 
 
     }
