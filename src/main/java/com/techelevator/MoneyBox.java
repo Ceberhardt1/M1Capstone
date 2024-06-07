@@ -41,4 +41,27 @@ public class MoneyBox {
     public void setMachineMoneyBalance(double machineMoneyBalance) {
         this.machineMoneyBalance = machineMoneyBalance;
     }
+
+
+    public String  spitChange(double mone){
+
+        int coins = (int) (mone * 100);
+
+        int quarters = coins / 25;
+        coins %= 25;
+
+        int nickles = coins / 5;
+        coins %= 5;
+        int dimes = coins / 10;
+        coins %= 10;
+
+        // Print the counts of each coin
+       String chaangeSay = ("youre change is: Quarters: " + quarters + "Dimes: " + dimes + "Nickels: " + nickles);
+        return chaangeSay;
+
+
+
+
+    }
+
 }

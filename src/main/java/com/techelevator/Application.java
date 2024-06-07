@@ -70,22 +70,40 @@ public class Application {
 						String askSlot = ui.askForSlotID();
 						String askQuantity = ui.askForQuantity();
 
-						for(Items in: inventory.retreiveList()){
-							if(in.getSlot().equalsIgnoreCase(askSlot)){
-
+						for(Items in: inventory.retreiveList()) {
+							if (in.getSlot().equalsIgnoreCase(askSlot)) {
 								Double sum = in.getPrice() * Double.parseDouble(askQuantity);
 								change.takeAwayMoney(sum);
-								ui.displaySnacksPriceType(in);
-								ui.displayMoney(change.machineMoneyBalance);
-							}
 
+
+								if (in.setQuantity(in.getQuantity() - Integer.parseInt(askQuantity)) > 0) {
+									ui.displaySnacksPriceType(in);
+									ui.displayMoney(change.machineMoneyBalance);
+									ui.displayQuantity(in.getQuantity());
+								} else {
+									ui.noquant();
+									ui.displayQuantity(in.getQuantity());
+								}
+							}
 						}
+
+
+
+
 
 					}
 					else if (purchaseChoice.equals("3")) {
 						// finished transaction
-						if(change.machineMoneyBalance ){
+						if(change.machineMoneyBalance > 0 ){
+							change.spitChange(change.machineMoneyBalance);
+							ui.changeString(change.spitChange(change.machineMoneyBalance));
+							change.machineMoneyBalance = 0;
+							break;
 
+
+
+						}else {
+							ui.notenoughMoneError();
 						}
 
 					}
