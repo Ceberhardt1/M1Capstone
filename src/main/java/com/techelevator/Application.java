@@ -1,6 +1,9 @@
 package com.techelevator;
 
+import com.sun.source.tree.UsesTree;
+
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -17,6 +20,10 @@ public class Application {
 	public void run() throws FileNotFoundException {
 
 		Inventory inventory = new Inventory();
+		List<Items> stockList = inventory.retreiveList();
+		logWriter writer = new logWriter();
+		salesTracker tracker = new salesTracker();
+		salesWriter salesWriter = new salesWriter();
 
 
 
@@ -34,7 +41,7 @@ public class Application {
 
 			if (userChoice.equals("1")) {
 				//display items
-				for (Items in : inventory.retreiveList()){
+				for (Items in : stockList){
 					ui.displayItems(in);
 				}
 
@@ -58,33 +65,66 @@ public class Application {
 						ui.askForDollarAmount();
 						Double money = change.feedMoney();
 						ui.displayMoney(money);
+						writer.writeToLog("FEED MONEY", "", money, change.getMachineMoneyBalance());
 
 
 					}
 					else if (purchaseChoice.equals("2")) {
 						// select product
-						for (Items in : inventory.retreiveList()){
-							ui.displayItems(in);
+						for (Items in : stockList){
+
+								ui.displayItems(in);
 						}
 						String askSlot = ui.askForSlotID();
 						String askQuantity = ui.askForQuantity();
 
-						for(Items in: inventory.retreiveList()) {
+						for(Items in: stockList) {
 							if (in.getSlot().equalsIgnoreCase(askSlot)) {
-								Double sum = in.getPrice() * Double.parseDouble(askQuantity);
-								change.takeAwayMoney(sum);
+
 
 //								in.toString();
 
 								if (inventory.isQuantityMoreThenZero(in) && inventory.isThereEnoughMoney(change.machineMoneyBalance)){
 
-									in.setQuantity(in.getQuantity() - Integer.parseInt(askQuantity));
-									in.toString();
+									if (inventory.validPurchase(in.getQuantity(), Integer.parseInt(askQuantity))){
+										Double sum = in.getPrice() * Double.parseDouble(askQuantity);
+										if (change.takeAwayMoney(sum) > 0){
+											in.setQuantity(in.getQuantity() - Integer.parseInt(askQuantity));
+											change.takeAwayMoney(sum);
+											ui.displayMoney(change.machineMoneyBalance);
+											ui.displaySnacksPriceType(in);
+											ui.displayQuantity(in.getQuantity());
+											ui.despensedItem(in);
+											tracker.addPoduct(in);
+											writer.writeToLog(in.getName(), in.getSlot(), change.takeAwayMoney(sum), change.machineMoneyBalance);
+											salesWriter.writeToLog(tracker.getProduct(), tracker.getCountProduct());
+										} else {
+											ui.notenoughMoneError();
+										}
 
-										ui.displayMoney(change.machineMoneyBalance);
+
+
+
+
+
+
+									} else {
+										ui.noquant();
+									}
+
+
+
+
+
+
+
+
+								} else {
+									for (Items its : stockList){
+										ui.displayItems(its);
 									}
 								}
-								ui.displayQuantity(in.getQuantity());
+								}
 
 							}
 
@@ -95,7 +135,9 @@ public class Application {
 						if(change.machineMoneyBalance > 0 ){
 							change.spitChange(change.machineMoneyBalance);
 							ui.changeString(change.spitChange(change.machineMoneyBalance));
+							writer.writeToLog("FEED MONEY", "", change.getMachineMoneyBalance(), 0);
 							change.machineMoneyBalance = 0;
+
 							break;
 
 
@@ -112,7 +154,12 @@ public class Application {
 			} else if (userChoice.equals("3")) {
 				break;
 				// exit
+			} else if (userChoice.equals("4")){
+
+
 			}
+
+
 
 
 

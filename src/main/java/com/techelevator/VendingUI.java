@@ -73,16 +73,21 @@ public class VendingUI {
         return myScanner.nextLine();
     }
 
-    public void displayItems(Items mhm){
-        System.out.println(mhm);
+    public void displayItems(Items itemss){
+
+        if (itemss.getQuantity() > 0){
+            System.out.println(itemss.toString());
+        } else {
+            System.out.println(itemss.soldOutItem());
+        }
     }
 
     public void displayMoney(double mone){
         System.out.println("current money: " + mone);
     }
 
-    public void displaySnacksPriceType(Items items, String snackType){
-        System.out.println(items.getName() + " " + items.getPrice() + " - For Each Item! " + snackType);
+    public void displaySnacksPriceType(Items items){
+        System.out.println(items.getName() + " " + items.getPrice() + " - For Each Item! ");
     }
     public void displayQuantity(int quant){
         System.out.println(quant + " left in the machine");
@@ -101,6 +106,10 @@ public class VendingUI {
     public void noquant(){
         System.out.println("this item is or will be out of quantity, please select a different item or amount");
     }
+    public void despensedItem(Items items){
+        System.out.println(items.getName() + " : " + items.getPrice() + " " + items.getYummy());
+    }
+
 
 
 

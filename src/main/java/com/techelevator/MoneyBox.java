@@ -24,8 +24,9 @@ public class MoneyBox {
 
     }
 
-    public void takeAwayMoney(Double debt){
+    public double takeAwayMoney(Double debt){
         machineMoneyBalance -= debt;
+        return machineMoneyBalance - debt;
     }
 
 
@@ -56,12 +57,19 @@ public class MoneyBox {
         coins %= 10;
 
         // Print the counts of each coin
-       String chaangeSay = ("youre change is: Quarters: " + quarters + "Dimes: " + dimes + "Nickels: " + nickles);
+       String chaangeSay = ("youre change is: Quarters: " + quarters + ", Dimes: " + dimes + ", Nickels: " + nickles);
         return chaangeSay;
 
 
 
 
+    }
+    public boolean isvalidPurcahse(double d1, double d2){
+        if ((d1 - d2) >= 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

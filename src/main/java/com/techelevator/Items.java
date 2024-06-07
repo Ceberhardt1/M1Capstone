@@ -83,6 +83,11 @@ public class Items {
 
     @Override
     public String toString() {
+
         return slot + '|' + '$' + price + '|' + name + '|' + type + '|' + quantity;
+    }
+
+    public String soldOutItem(){
+            return slot + '|' + '$' + price + '|' + name + '|' + type + '|' + "SOLD OUT";
     }
 }

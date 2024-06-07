@@ -12,7 +12,9 @@ public class Inventory {
     private Map<String, Items> newMap;
 
 
-// add string to constrcutor
+
+
+    // add string to constrcutor
     public Inventory() throws FileNotFoundException {
         this.newMap = fileReader.loadFile();
 
@@ -22,7 +24,9 @@ public class Inventory {
 
 
     public List<Items> retreiveList(){
+
         List <Items> itemsListInventory = new ArrayList<>();
+
 
         for (Map.Entry<String, Items> entry : newMap.entrySet()) {
             Items item = entry.getValue();
@@ -48,5 +52,23 @@ public class Inventory {
         }
         return false;
     }
+
+    public boolean validPurchase(double d1, double d2){
+        if ((d1 - d2) >= 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean isSoldOut(int quan){
+        if (quan <= 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+//    public boolean updateList(){
+//
+//    }
  }
 
