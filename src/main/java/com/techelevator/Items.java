@@ -9,15 +9,16 @@ public class Items {
     private String type;
     private int quantity = 10;
 
+    public String yummy;
+
 
     //Create constructor
 
-    public Items(String name, double price, String slot, String type, int quantity) {
+    public Items(String slot, String name, double price, String quantity) {
         this.name = name;
         this.price = price;
-        this.slot = slot;
-        this.type = type;
-        this.quantity = quantity;
+        this.quantity = 10;
+        this.yummy = "";
 
     }
 
@@ -75,5 +76,9 @@ public class Items {
     public double setQuantity(int quantity) {
         this.quantity = quantity;
         return quantity;
+    }
+
+    public String getYummy() {
+        return yummy;
     }
 }

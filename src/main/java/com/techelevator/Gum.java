@@ -1,10 +1,18 @@
 package com.techelevator;
 
-public class Gum {
+public class Gum extends Items{
 
-    String gum = "Chew Chew, Yum!";
 
-    public String getGum() {
-        return gum;
+
+
+    public Gum(String slot, String name, double price, String quantity) {
+        super(slot,name, price, quantity);
+
+    }
+
+    @Override
+    public String getYummy() {
+        yummy = "Chew Chew, YUM!";
+        return super.getYummy();
     }
 }

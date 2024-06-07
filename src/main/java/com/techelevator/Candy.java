@@ -1,14 +1,18 @@
 package com.techelevator;
 
-public class Candy {
+public class Candy extends Items {
 
     String candy = "Munch Munch, Yum!";
 
-    public String getCandy() {
-        return candy;
+    public Candy(String slot, String name, double price, String quantity) {
+        super(slot,name, price, quantity);
+
     }
-    public String toString(){
-        return candy;
+
+    @Override
+    public String getYummy() {
+        yummy = "Munch Munch, YUM!";
+        return super.getYummy();
     }
 
 }

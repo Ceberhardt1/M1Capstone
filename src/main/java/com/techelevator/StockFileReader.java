@@ -21,7 +21,7 @@ public class StockFileReader {
 
     public Map<String, Items> loadFile() throws FileNotFoundException {
 
-        Map<String, Items> quantityTrackerMap = new HashMap<>();
+        Map<String, Items> quantityTrackerMap = new TreeMap<>();
 
         List<Items> listOfItems = new ArrayList<>();
         File stockFile = new File("vendingmachine.csv");
@@ -32,28 +32,43 @@ public class StockFileReader {
         try (Scanner scanner = new Scanner(stockFile)) {
             //Loop through to the end of the file
             while (scanner.hasNextLine()) {
-//                Items item = new Items();
+
+
 
                 //grabbing a record of the file, to stick into an object
                 String record = scanner.nextLine();
                 String[] fields = record.split("\\|");
 
 
-                //setting parts of the object ex: name, and quantity
-//                Gum.setSlot(fields[0]);
-//                Gum.setName(fields[1]);
-//                item.setPrice(Double.parseDouble(fields[2]));
-//                if 3 = gum
-//                item.setType(fields[3]);
-//                item gum = new Gum();
-//                //setters
-//
-//                // makes a map of the items along with their quantity which is default 10
-//
+//                setting parts of the object ex: name, and quantity
+
+                if (fields[3].equalsIgnoreCase("Gum")){
+
+                    quantityTrackerMap.put(fields[0], new Gum(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]));
+
+                } else if (fields[3].equalsIgnoreCase("Candy")){
+
+                    quantityTrackerMap.put(fields[0],new Candy(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]));
+
+                } else if (fields[3].equalsIgnoreCase("Drink")){
+
+                    quantityTrackerMap.put(fields[0], new Drink(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]));
+
+                } else if (fields[3].equalsIgnoreCase( "Chip")){
+
+                    quantityTrackerMap.put(fields[0], new Chips(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]));
+
+
+                }
+
+
+
+
+                // makes a map of the items along with their quantity which is default 10
+
 //                quantityTrackerMap.put(item.getSlot(), item);
 
-                //add items to list
-               // listOfItems.add(item);
+//                add items to list
 
 
             }

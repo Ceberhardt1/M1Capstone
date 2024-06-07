@@ -17,11 +17,6 @@ public class Application {
 	public void run() throws FileNotFoundException {
 
 		Inventory inventory = new Inventory();
-		Items items = new Items();
-		Candy candy = new Candy();
-		Drink drinks = new Drink();
-		Chips chips = new Chips();
-		Gum gum = new Gum();
 
 
 
@@ -84,6 +79,7 @@ public class Application {
 								if (inventory.isQuantityMoreThenZero(in) && inventory.isThereEnoughMoney(change.machineMoneyBalance)){
 
 									in.setQuantity(in.getQuantity() - Integer.parseInt(askQuantity));
+									in.toString();
 
 										ui.displayMoney(change.machineMoneyBalance);
 										ui.displayQuantity(in.getQuantity());
