@@ -17,7 +17,11 @@ public class Application {
 	public void run() throws FileNotFoundException {
 
 		Inventory inventory = new Inventory();
-
+		Items items = new Items();
+		Candy candy = new Candy();
+		Drink drinks = new Drink();
+		Chips chips = new Chips();
+		Gum gum = new Gum();
 
 
 
@@ -75,20 +79,21 @@ public class Application {
 								Double sum = in.getPrice() * Double.parseDouble(askQuantity);
 								change.takeAwayMoney(sum);
 
+//								in.toString();
 
-								if (in.setQuantity(in.getQuantity() - Integer.parseInt(askQuantity)) > 0) {
-									ui.displaySnacksPriceType(in);
-									ui.displayMoney(change.machineMoneyBalance);
-									ui.displayQuantity(in.getQuantity());
-								} else {
+								if (inventory.isQuantityMoreThenZero(in) && inventory.isThereEnoughMoney(change.machineMoneyBalance)){
+
+									in.setQuantity(in.getQuantity() - Integer.parseInt(askQuantity));
+
+										ui.displayMoney(change.machineMoneyBalance);
+										ui.displayQuantity(in.getQuantity());
+									}
+								}
+								 else{
 									ui.noquant();
 									ui.displayQuantity(in.getQuantity());
 								}
 							}
-						}
-
-
-
 
 
 					}
@@ -102,27 +107,20 @@ public class Application {
 
 
 
-						}else {
+						}
+						else{
 							ui.notenoughMoneError();
 						}
 
 					}
 
-
 				}
-
-
 
 			} else if (userChoice.equals("3")) {
 				break;
 				// exit
-//		} else if (userChoice.equals("4")) {
-//
-//		}
 			}
 
-
-			//do amazing stuff here!
 
 
 		}

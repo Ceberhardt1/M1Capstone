@@ -81,8 +81,8 @@ public class VendingUI {
         System.out.println("current money: " + mone);
     }
 
-    public void displaySnacksPriceType(Items items){
-        System.out.println(items.getName() + " " + items.getPrice() + " - For Each Item!");
+    public void displaySnacksPriceType(Items items, String snackType){
+        System.out.println(items.getName() + " " + items.getPrice() + " - For Each Item! " + snackType);
     }
     public void displayQuantity(int quant){
         System.out.println(quant + " left in the machine");
@@ -101,6 +101,7 @@ public class VendingUI {
     public void noquant(){
         System.out.println("this item is or will be out of quantity, please select a different item or amount");
     }
+
 
 
 

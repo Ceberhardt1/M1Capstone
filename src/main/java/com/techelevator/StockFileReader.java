@@ -32,7 +32,7 @@ public class StockFileReader {
         try (Scanner scanner = new Scanner(stockFile)) {
             //Loop through to the end of the file
             while (scanner.hasNextLine()) {
-                Items item = new Items();
+//                Items item = new Items();
 
                 //grabbing a record of the file, to stick into an object
                 String record = scanner.nextLine();
@@ -40,18 +40,20 @@ public class StockFileReader {
 
 
                 //setting parts of the object ex: name, and quantity
-                item.setSlot(fields[0]);
-                item.setName(fields[1]);
-                item.setPrice(Double.parseDouble(fields[2]));
-                item.setType(fields[3]);
-
-
-                // makes a map of the items along with their quantity which is default 10
-
-                quantityTrackerMap.put(item.getSlot(), item);
+//                Gum.setSlot(fields[0]);
+//                Gum.setName(fields[1]);
+//                item.setPrice(Double.parseDouble(fields[2]));
+//                if 3 = gum
+//                item.setType(fields[3]);
+//                item gum = new Gum();
+//                //setters
+//
+//                // makes a map of the items along with their quantity which is default 10
+//
+//                quantityTrackerMap.put(item.getSlot(), item);
 
                 //add items to list
-                listOfItems.add(item);
+               // listOfItems.add(item);
 
 
             }

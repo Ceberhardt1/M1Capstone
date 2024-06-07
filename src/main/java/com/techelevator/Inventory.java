@@ -31,5 +31,22 @@ public class Inventory {
         }
         return itemsListInventory;
     }
+    // check quan
+
+    // check ava
+
+    public boolean isQuantityMoreThenZero(Items items){
+        if (items.getQuantity() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isThereEnoughMoney(Double money2) {
+        if (money2 > 0) {
+            return true;
+        }
+        return false;
+    }
  }
 
