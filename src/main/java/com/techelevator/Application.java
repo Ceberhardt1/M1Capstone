@@ -82,13 +82,10 @@ public class Application {
 									in.toString();
 
 										ui.displayMoney(change.machineMoneyBalance);
-										ui.displayQuantity(in.getQuantity());
 									}
 								}
-								 else{
-									ui.noquant();
-									ui.displayQuantity(in.getQuantity());
-								}
+								ui.displayQuantity(in.getQuantity());
+
 							}
 
 

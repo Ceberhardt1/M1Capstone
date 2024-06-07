@@ -14,9 +14,11 @@ public class Items {
 
     //Create constructor
 
-    public Items(String slot, String name, double price, String quantity) {
+    public Items(String slot, String name, double price,  String type) {
+        this.slot = slot;
         this.name = name;
         this.price = price;
+        this.type = type;
         this.quantity = 10;
         this.yummy = "";
 
@@ -28,10 +30,7 @@ public class Items {
 
     //toString method
 
-    @Override
-    public String toString() {
-        return slot + '|' + '$' + price + '|' + name + '|' + type ;
-    }
+
 
 
     //Generate getters/setters for variables
@@ -80,5 +79,10 @@ public class Items {
 
     public String getYummy() {
         return yummy;
+    }
+
+    @Override
+    public String toString() {
+        return slot + '|' + '$' + price + '|' + name + '|' + type + '|' + quantity;
     }
 }

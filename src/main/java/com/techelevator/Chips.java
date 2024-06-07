@@ -4,8 +4,8 @@ public class Chips extends Items{
 
     String chips = "Crunch Crunch, Yum!";
 
-    public Chips(String slot, String name, double price, String  quantity) {
-        super(slot,name, price, quantity);
+    public Chips(String slot, String name, double price, String type) {
+        super(slot,name, price, type);
 
     }
 
