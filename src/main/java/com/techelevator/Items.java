@@ -84,7 +84,8 @@ public class Items {
     @Override
     public String toString() {
 
-        return slot + '|' + '$' + price + '|' + name + '|' + type + '|' + quantity;
+//        return slot + '|' + '$' + price + '|' + name + '|' + type + '|' + quantity;
+        return String.format("%-4s | $%-4s | %-20s | %d%n", slot, price, name, quantity);
     }
 
     public String soldOutItem(){

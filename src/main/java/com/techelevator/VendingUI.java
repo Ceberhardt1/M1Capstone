@@ -109,6 +109,11 @@ public class VendingUI {
     public void despensedItem(Items items){
         System.out.println(items.getName() + " : " + items.getPrice() + " " + items.getYummy());
     }
+    public void showFormattedList(List<Items> callList){
+        for (Items in : callList){
+            System.out.println(in);
+        }
+    }
 
 
 

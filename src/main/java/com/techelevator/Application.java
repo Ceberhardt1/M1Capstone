@@ -41,12 +41,7 @@ public class Application {
 
 			if (userChoice.equals("1")) {
 				//display items
-				for (Items in : stockList){
-					ui.displayItems(in);
-				}
-
-
-
+				ui.showFormattedList(stockList);
 
 			} else if (userChoice.equals("2")) {
 				// head to purchase menu
@@ -71,10 +66,8 @@ public class Application {
 					}
 					else if (purchaseChoice.equals("2")) {
 						// select product
-						for (Items in : stockList){
+						ui.showFormattedList(stockList);
 
-								ui.displayItems(in);
-						}
 						String askSlot = ui.askForSlotID();
 						String askQuantity = ui.askForQuantity();
 

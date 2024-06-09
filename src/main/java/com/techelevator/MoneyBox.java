@@ -51,10 +51,11 @@ public class MoneyBox {
         int quarters = coins / 25;
         coins %= 25;
 
-        int nickles = coins / 5;
-        coins %= 5;
         int dimes = coins / 10;
         coins %= 10;
+
+        int nickles = coins / 5;
+        coins %= 5;
 
         // Print the counts of each coin
        String chaangeSay = ("youre change is: Quarters: " + quarters + ", Dimes: " + dimes + ", Nickels: " + nickles);
